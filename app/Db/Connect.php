@@ -16,10 +16,10 @@ final class Connect implements ConnectInterface
     private function __construct()
     {
         try{
-           $db = new \PDO("mysql:host=" . $this->db_host . ";dbname=" .
+           $db = new \PDO("mysql:host=" . $this->host . ";dbname=" .
                                            $this->db_name,
-                                           $this->db_username,
-                                           $this->db_password);
+                                           $this->db_user,
+                                           $this->db_pass);
         }catch (\PDOException $e){
             throw new $e->getMessage();
         }
