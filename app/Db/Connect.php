@@ -6,6 +6,7 @@ namespace Filter\Db;
  */
 final class Connect implements ConnectInterface
 {
+
     private $db = null;
     private static $instance = null;
     private $host = "localhost";

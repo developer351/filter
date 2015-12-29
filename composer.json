@@ -13,7 +13,7 @@
   "require":{
     "php": ">=5.5.0"
   },
-  "authoload":{
+  "autoload":{
       "psr-4":{
         "Filter\\": "app/"
       }

@@ -1,4 +1,6 @@
 <?php
+namespace Filter\Db;
+
 interface ConnectInterface
 {
     /**
