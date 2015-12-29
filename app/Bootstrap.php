@@ -1,8 +1,9 @@
 <?php
-namespace application;
+namespace Filter;
 
+use Filter\Db\Connect;
 
-$db = \app\Db\Connect::getInstance();
+$db = Connect::getInstance();
 
 var_dump($db);
 

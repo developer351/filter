@@ -15,7 +15,7 @@
   },
   "authoload":{
       "psr-4":{
-        "DbExample\\": "application/"
+        "Filter\\": "app/"
       }
   }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace app\Db;
+namespace Filter\Db;
 
 /**
  * class for connection for mysql database
