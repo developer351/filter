@@ -1,12 +1,12 @@
 <?php
 namespace Filter;
 
-use Filter\Db\Connect;
-use Filter\Db\DbFunctions;
+use Filter\Db\Db;
+use Filter\Classes\FormData;
 
-$db = Connect::getInstance();
+$db = Db::getInstance();
 
-$func = new DbFunctions($db);
+$formData = new FormData($db);
 
 /*var_dump($db);*/
 

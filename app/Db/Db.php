@@ -4,7 +4,7 @@ namespace Filter\Db;
 /**
  * class for connection for mysql database
  */
-final class Connect implements ConnectInterface
+final class Db implements DbInterface
 {
 
     private $db = null;
@@ -21,6 +21,7 @@ final class Connect implements ConnectInterface
                                            $this->db_name,
                                            $this->db_user,
                                            $this->db_pass);
+            $this->db = $db;
         }catch (\PDOException $e){
             throw new $e->getMessage();
         }
@@ -42,6 +43,14 @@ final class Connect implements ConnectInterface
     public function connect()
     {
         return $this->db;
+    }
+
+    public function select($sql)
+    {
+        $query = strip_tags($sql);
+        $result = $this->connect()->query($query);
+        $row = $result->fetchAll();
+        return $row;
     }
 
     public function closeConnect()

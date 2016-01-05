@@ -1,16 +1,28 @@
 <?php
-    $sql = true;
-    $func->select($sql);
+
+   $country = $formData->getCountries();
+   $currency = $formData->getCurrensies();
+
 ?>
     <form>
         <label>Country</label>
         <select>
-        <option></option>
+            <?php
+                foreach($country as $countryItem)
+                {
+                    echo "<option>".$countryItem['name']."</option>";
+                }
+            ?>
         </select>
 
         <label>Currency</label>
         <select>
-            <option></option>
+            <?php
+            foreach($currency as $currencyItem)
+            {
+                echo "<option>".$currencyItem['name']."</option>";
+            }
+            ?>
         </select>
 
         <label>Output format</label>
