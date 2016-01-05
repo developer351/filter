@@ -2,8 +2,11 @@
 namespace Filter;
 
 use Filter\Db\Connect;
+use Filter\Db\DbFunctions;
 
 $db = Connect::getInstance();
 
-var_dump($db);
+$func = new DbFunctions($db);
+
+/*var_dump($db);*/
 
