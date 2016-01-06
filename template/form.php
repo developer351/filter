@@ -33,3 +33,10 @@
         </select>
         <input type="submit" name="send" value="send">
     </form>
+    <hr>
+<?php
+  $data = $filter->filterData();
+  $output->printData($data);
+?>
+<hr>
+

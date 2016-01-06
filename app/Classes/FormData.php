@@ -30,4 +30,9 @@ class FormData implements FormDataInterface
         $result = $this->db->select($sql);
         return $result;
     }
+
+    public function getFormRequest()
+    {
+
+    }
 }
