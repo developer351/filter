@@ -1,7 +1,7 @@
 <?php
 namespace Filter\Classes;
 
-interface FormDataInterface
+interface ServicesInterface
 {
     /**
      * method for getting all countries

@@ -10,7 +10,7 @@ namespace Filter\Classes;
 
 use Filter\Db\Db;
 
-class FormData implements FormDataInterface
+class Services implements ServicesInterface
 {
     public function __construct(Db $db)
     {

@@ -1,12 +1,12 @@
 <?php
 
-   $country = $formData->getCountries();
-   $currency = $formData->getCurrensies();
+   $country = $services->getCountries();
+   $currency = $services->getCurrensies();
 
 ?>
-    <form>
+    <form method="post">
         <label>Country</label>
-        <select>
+        <select name="country">
             <?php
                 foreach($country as $countryItem)
                 {
@@ -16,7 +16,7 @@
         </select>
 
         <label>Currency</label>
-        <select>
+        <select name="currency">
             <?php
             foreach($currency as $currencyItem)
             {
@@ -26,17 +26,20 @@
         </select>
 
         <label>Output format</label>
-        <select>
+        <select name="format">
             <option>Json</option>
             <option>Xml</option>
             <option>Print</option>
         </select>
+        <input type="text" name="quantity">
         <input type="submit" name="send" value="send">
     </form>
     <hr>
 <?php
-  $data = $filter->filterData();
-  $output->printData($data);
+    if(isset($_POST['send'])){
+       $getForm->getFormData();
+    }
+
 ?>
 <hr>
 

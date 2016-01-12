@@ -13,14 +13,17 @@ use Filter\Db\Db;
 
 class Filter implements FilterInterface
 {
-    public function __construct(Db $db)
+    /*public function __construct(Db $db)
     {
         return $this->db = $db;
-    }
+    }*/
 
-    public function filterData()
+    public function filterData($currency,$country,$quantity)
     {
-        $sql = "SELECT name FROM countries";
+        $sql = "SELECT * FROM price as p
+                JOIN countries c ON c.id = p.country_id
+                JOIN currency cn ON cn.id = p.currency_id
+                WHERE p.price > ".$quantity." and c.name ='".$country."' and cn.name='".$currency."'";
         $query = $this->db->select($sql);
         return $query;
     }

@@ -2,15 +2,16 @@
 namespace Filter;
 
 use Filter\Db\Db;
-use Filter\Classes\FormData;
+use Filter\Classes\Services;
 use Filter\Classes\OutputInfo;
 use Filter\Classes\Filter;
+use \Filter\Classes\Form;
 
 $db = Db::getInstance();
 
-$formData = new FormData($db);
-$filter = new Filter($db);
-$output = new OutputInfo();
-
+$services = new Services($db);
+/*$filter = new Filter($db);*/
+/*$output = new OutputInfo();*/
+$getForm = new Form($db);
 /*var_dump($db);*/
 
