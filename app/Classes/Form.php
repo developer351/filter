@@ -13,13 +13,32 @@ class Form extends Filter implements FormInterface
     public function getFormData()
     {
         $output = new OutputInfo();
-        if($_POST['format'] == 'Print'){
-            $country = $_POST['country'];
-            $currency = $_POST['currency'];
-            $quantity = $_POST['quantity'];
-            $data = $this->filterData($currency,$country,$quantity);
-            $output->printData($data);
-
+        $country = $_POST['country'];
+        $currency = $_POST['currency'];
+        $quantity = $_POST['quantity'];
+        try {
+            if (!empty($country) && !empty($currency) && !empty($quantity)) {
+                if ($_POST['format'] == 'Print') {
+                    $data = $this->filterData($currency, $country, $quantity);
+                    $output->printData($data);
+                } else {
+                    if ($_POST['format'] == 'Xml') {
+                        $data = $this->filterData(
+                            $currency, $country, $quantity
+                        );
+                        $output->saveXml($data);
+                    } else {
+                        if ($_POST['format'] == 'Json') {
+                            $data = $this->filterData(
+                                $currency, $country, $quantity
+                            );
+                            $output->saveJson($data);
+                        }
+                    }
+                }
+            }
+        }catch (\RuntimeException $e){
+            die("error - ".$e->getMessage()."line". $e->getLine());
         }
     }
 }

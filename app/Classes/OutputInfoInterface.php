@@ -13,5 +13,12 @@ interface OutputInfoInterface
     /**
      * this method save json
      */
-    public function saveJson();
+    public function saveJson($data);
+
+    /**
+     * @return mixed
+     *
+     * this method saved data in xml file
+     */
+    public function saveXml($data);
 }
