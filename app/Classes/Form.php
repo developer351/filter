@@ -13,29 +13,31 @@ class Form extends Filter implements FormInterface
     public function getFormData()
     {
         $output = new OutputInfo();
-        $country = $_POST['country'];
-        $currency = $_POST['currency'];
-        $quantity = $_POST['quantity'];
+        $country = htmlspecialchars($_POST['country']);
+        $currency = htmlspecialchars($_POST['currency']);
+        $quantity = htmlspecialchars($_POST['quantity']);
+        (string)$format = htmlspecialchars($_POST['format']);
+
+
         try {
             if (!empty($country) && !empty($currency) && !empty($quantity)) {
-                if ($_POST['format'] == 'Print') {
-                    $data = $this->filterData($currency, $country, $quantity);
-                    $output->printData($data);
-                } else {
-                    if ($_POST['format'] == 'Xml') {
-                        $data = $this->filterData(
-                            $currency, $country, $quantity
-                        );
-                        $output->saveXml($data);
-                    } else {
-                        if ($_POST['format'] == 'Json') {
-                            $data = $this->filterData(
-                                $currency, $country, $quantity
-                            );
-                            $output->saveJson($data);
-                        }
-                    }
-                }
+                 switch($format){
+                     case $format == 'Print':
+                         $data = $this->filterData($currency, $country, $quantity);
+                         $output->printData($data);
+                         break;
+                     case $format == 'Xml':
+                         $data = $this->filterData($currency, $country, $quantity);
+                         $output->saveXml($data);
+                         break;
+                     case $format == 'Json':
+                         $data = $this->filterData($currency, $country, $quantity);
+                         $output->saveJson($data);
+                         break;
+                     default :
+                         throw new \Exception('Empty parameter');
+                         break;
+                 }
             }
         }catch (\RuntimeException $e){
             die("error - ".$e->getMessage()."line". $e->getLine());

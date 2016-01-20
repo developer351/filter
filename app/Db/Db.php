@@ -45,12 +45,36 @@ final class Db implements DbInterface
         return $this->db;
     }
 
-    public function select($sql)
+    public function select($quantity, $country, $currency, $area, $table)
     {
-        $query = strip_tags($sql);
-        $result = $this->connect()->query($query);
-        $row = $result->fetchAll();
-        return $row;
+        if(empty($area)){
+            $area = '*';
+        }else{
+            $area = implode(",",$area);
+        }
+            if(!empty($quantity)) {
+                $query = "SELECT " . $area . " FROM " . $table . " as p
+                JOIN countries c ON c.id = p.country_id
+                JOIN currency cn ON cn.id = p.currency_id
+                WHERE p.price > :quantity and c.name = :cname and cn.name= :cnname";
+                $result = $this->connect()->query($query);
+                $result->bindParam(':cname', $country);
+                $result->bindParam(':cnname', $currency);
+                $result->bindParam(':quantity', $quantity);
+                $result->execute();
+                $row = $result->fetchAll();
+                return $row;
+
+            }else{
+                print_r($table);
+                $query = "SELECT $area FROM $table";
+                $result = $this->connect()->query($query);
+                $row = $result->fetchAll();
+                return $row;
+            }
+
+
+
     }
 
     public function closeConnect()

@@ -9,13 +9,6 @@ interface DbInterface
     public function connect();
 
     /**
-     * @param $sql
-     *
-     * @return mixed
-     */
-    public function select($sql);
-
-    /**
      * this method to close the connection
      */
     public function closeConnect();

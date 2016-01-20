@@ -9,7 +9,7 @@
 namespace Filter\Classes;
 
 
-class OutputInfo implements OutputInfoInterface
+class OutputInfo
 {
     public function printData($data)
     {

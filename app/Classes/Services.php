@@ -19,7 +19,7 @@ class Services implements ServicesInterface
     public function getCountries()
     {
         $sql = "SELECT name FROM countries";
-        $result = $this->db->select($sql);
+        $result = $this->db->connect()->query($sql);
         return $result;
 
     }
@@ -27,7 +27,7 @@ class Services implements ServicesInterface
     public function getCurrensies()
     {
         $sql = "SELECT name FROM currency";
-        $result = $this->db->select($sql);
+        $result = $this->db->connect()->query($sql);
         return $result;
     }
 
