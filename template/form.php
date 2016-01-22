@@ -37,7 +37,7 @@
     <hr>
 <?php
     if(isset($_POST['send'])){
-       $getForm->getFormData();
+       $display->create($_POST['format']);
     }
 
 ?>
