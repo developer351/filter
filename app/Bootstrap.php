@@ -7,7 +7,7 @@ use Filter\Classes\Services;
 $db = Db::getInstance();
 
 $services = new Services($db);
-$display = new Display();
+$display = new Display($db);
 
 /*var_dump($db);*/
 
